@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/georgekaran/ui-flow.git"
+    "url": "https://github.com/georgekaran/ui-flow.git"
   },
   "author": "George Karan Kommers Mueller",
   "license": "ISC",
