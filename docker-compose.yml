@@ -1,0 +1,33 @@
+version: '3'
+volumes:
+  data:
+networks: 
+  database:
+  back:
+  front:
+  app:
+services: 
+  db:
+    image: mongo:4.0.4
+    volumes:
+      - ./db:/db
+    working_dir: /db
+    ports: 
+      - 27017:27017
+    networks: 
+      - database
+  app:
+    image: nginx:1.13
+    volumes:
+      # Site
+      - ./app/ui-flow/build:/usr/share/nginx/html/
+      # Configuraçâo do proxy reverso
+      - ./front-end/default.conf:/etc/nginx/conf.d/default.conf
+    #working_dir: /app/ui-flow
+    #command: bash npm run build
+    ports:
+      - 80:80
+    networks: 
+      - app
+    depends_on: 
+      - db
