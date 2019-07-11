@@ -31,3 +31,13 @@ services:
       - app
     depends_on: 
       - db
+  back-end:
+    build: ./back-end
+    volumes:
+      - ./back-end:/home/node/server
+    ports:
+      - 5000:5000
+    networks: 
+      - back
+    depends_on: 
+      - db
