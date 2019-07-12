@@ -1,0 +1,17 @@
+.navbar {
+    
+}
+
+.container-left {
+    width: 70%;
+    height: 100vh;
+    background: aqua;
+    float: left;
+}
+
+.container-right {
+    width: 30%;
+    height: 100vh;
+    background: burlywood;
+    float: right;
+}
