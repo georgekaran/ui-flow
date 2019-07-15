@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import CustomRoute from './CustomRoute'
 import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
+import Template from '../pages/Template'
 
 class Router extends React.Component {
     constructor(props) {
@@ -14,7 +15,8 @@ class Router extends React.Component {
         return (
             <BrowserRouter>
                 <Switch>
-                    <CustomRoute path="/" component={Home} isAuth={false} isPrivate={false} />
+                    <CustomRoute exact path="/" component={Home} isAuth={false} isPrivate={false} />
+                    <CustomRoute path="/template" component={Template} isAuth={false} isPrivate={false} />
                     <Route component={NotFound} />
                 </Switch>
             </BrowserRouter>

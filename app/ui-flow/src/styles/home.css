@@ -1,17 +1,64 @@
 .navbar {
-    
+}
+
+.container {
+    display: flex;
+    background: #673AB7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #512DA8, #673AB7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #512DA8, #673AB7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 100vh;
+}
+
+.menu-header {
+    margin: 0 auto;
+    width: 95%;
+}
+
+.container-center {
+    justify-content: center;
+}
+
+.wrapper-logo {
+    margin-top: 50px;
 }
 
 .container-left {
     width: 70%;
     height: 100vh;
-    background: aqua;
+    background: rgb(29,25,52);
+    background: linear-gradient(180deg, rgba(29,25,52,1) 100%, rgba(97,85,174,1) 100%);
     float: left;
 }
 
 .container-right {
     width: 30%;
     height: 100vh;
-    background: burlywood;
+    background: #251633;
     float: right;
+}
+
+.menu-top {
+    display: inline-flex;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.menu-top li {
+    display: flex;
+    justify-content: space-between!important;
+    color: white;
+    font-weight: 500;
+    padding: 0px;
+    margin: 0px;
+    border-bottom: 1px solid white;
+    padding: 10px 20px;
+}
+
+.menu-top li:first-child {
+    border-right: 1px solid white;
+}
+
+.menu-top li.social-media {
+    border-left: 1px solid white;
 }

@@ -1,0 +1,11 @@
+.menu-left {
+    display: flex;
+    width: 70px;
+    height: 100vh;
+    background: #6155ae;
+    justify-content: center;
+}
+
+.item-profile {
+    height: 50px;
+}
