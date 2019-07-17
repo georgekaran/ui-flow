@@ -31,9 +31,9 @@ app.use(function(req, res, next) {
 
 //app.use('/images/', express.static(global.imagesPath))
 
-//require('./app/controllers/index')(app)
+require('./app/controllers/index')(app)
 
-app.use('/', (req, res) => res.send('Hello World!'))
+app.use('/', (req, res) => res.send('UIFlow is up and running!'))
 
 app.listen(5000, () => {
     console.log('Server is up on port 5000')
