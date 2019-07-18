@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const modules = await Module.find({modules: {$ne:[null]}})
+        const modules = await Module.find({modules: {$ne:[]}})
         res.send({ modules })
     } catch (err) {
         console.log(err)

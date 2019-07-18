@@ -21,8 +21,8 @@ class LeftMenu extends React.Component {
     async componentDidMount() {
         await this.clearState();
         await ModuleApi.getAll().then(resp => {
-            this.setState({ ...this.state, modules: resp.data.modules })
-            console.log(resp.data)
+            const modules = resp.data.modules
+            this.setState({ ...this.state, modules })
         })
         this.addClickEvent();
     }
@@ -54,12 +54,8 @@ class LeftMenu extends React.Component {
                     <div className="item-profile">
                         span
                     </div>
-                    {this.state.modules.length && this.state.modules.map(module => {
-                        return <ItemMenu label={module.title} menuClicked={this.state.menuClicked} subItems={module.modules} />
-                    })}
-                    {/* <ItemMenu label="Configurações" menuClicked={this.state.menuClicked} subItems={[]} />
-                    <ItemMenu label="Projetos" menuClicked={this.state.menuClicked} />
-                    <ItemMenu label="Outros" menuClicked={this.state.menuClicked} /> */}
+                    {this.state.modules.map(module => {
+                        return <ItemMenu key={module._id} label={module.title} menuClicked={this.state.menuClicked} subItems={module.modules} />})}
                 </div>
             </nav>
         )

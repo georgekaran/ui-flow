@@ -4,6 +4,8 @@
     height: 100vh;
     background: #6155ae;
     justify-content: center;
+    -webkit-transition: width 0.3s; /* Safari prior 6.1 */
+    transition: width 0.3s;
 }
 
 .item-profile {

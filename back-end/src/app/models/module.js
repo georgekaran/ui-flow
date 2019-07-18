@@ -10,10 +10,6 @@ const ModuleSchema = new mongoose.Schema({
         default: "#",
     },
     modules: [this],
-    tasks: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Module',
-    }],
     createdAt: {
         type: Date,
         default: Date.now,

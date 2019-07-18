@@ -13,7 +13,7 @@ const ItemMenu = ({ label = 'Teste', menuClicked = false, subItems = [] }) => {
     return (
         <div className='item' onClick={handleClick}>
             <span>{label}</span>
-            {(Array.isArray(subItems) && subItems.length) && subItems.map(item => <ItemMenu label={item} menuClicked={menuClicked} subItems={[]} />)}
+            {subItems.map(item => <ItemMenu key={item._id} label={item.title} menuClicked={menuClicked} subItems={[]} />)}
         </div>
     )
 }
