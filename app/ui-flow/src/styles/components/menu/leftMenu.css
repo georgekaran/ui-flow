@@ -8,6 +8,68 @@
     transition: width 0.3s;
 }
 
+.menu-left-modules-wrapper {
+    padding: 20px 0;
+    margin: 0 10px;
+}
+
+.image-profile {
+    height: 80%;
+    width: 80%;
+    border-radius: 50%;
+    top: 10%;
+    right: 10%;
+    /* margin: auto; */
+    position: absolute;
+}
+
 .item-profile {
-    height: 50px;
+    height: 110px;
+    width: 110px;
+    border: 2px dashed white;
+    border-radius: 50%;
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+    -webkit-transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+    -moz-transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+    -o-transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
+/* This fires as soon as the element enters the dorm */
+.item-profile-transition-enter,
+.item-profile-transition-appear {
+  /*We give the list the initial dimension of the list button*/
+  top: 0;
+  width: 120px;
+  max-height: 40px;
+  color: transparent;
+  background-color: #5a564c;
+}
+/* This is where we can add the transition*/
+.item-profile-transition-enter-active,
+.item-profile-transition-appear-active {
+  top: 45px;
+  width: 200px;
+  max-height: 200px;
+  background-color: #9e8949;
+  transition: all 400ms;
+}
+
+/* This fires as soon as the this.state.showList is false */
+.item-profile-transition-exit {
+  top: 45px;
+  width: 200px;
+  max-height: 200px;
+  background-color: #9e8949;
+}
+/* fires as element leaves the DOM*/
+.item-profile-transition-exit-active {
+  top: 0;
+  width: 120px;
+  max-height: 40px;
+  color: transparent;
+  background-color: #5a564c;
+  transition: all 400ms;
 }

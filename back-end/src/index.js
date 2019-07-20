@@ -7,17 +7,9 @@ const session = require('express-session');
 var cors = require('cors')
 
 const app = express()
-// app.use(session({
-//     name: 'sid',
-//     resave: false,
-//     saveUninitialized: false,
-//     secret: 'ssh!quiet,it',
-//     cookie: {
-//         maxAge: 7200,
-//         sameSite: true,
-//         secure: process.env.NODE_ENV == 'prod'
-//     }
-// }))
+const appDir = path.join(os.homedir(), "images/");
+global.imagesPath = appDir
+
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }));
 app.use(cookieParser());
@@ -29,7 +21,7 @@ app.use(function(req, res, next) {
     next();
 });
 
-//app.use('/images/', express.static(global.imagesPath))
+app.use('/images/', express.static(global.imagesPath))
 
 require('./app/controllers/index')(app)
 

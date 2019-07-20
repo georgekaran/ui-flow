@@ -9,6 +9,10 @@ const ModuleSchema = new mongoose.Schema({
         type: String,
         default: "#",
     },
+    icon: {
+        type: String,
+        required: true
+    },
     modules: [this],
     createdAt: {
         type: Date,
