@@ -11,7 +11,7 @@ const ModuleSchema = new mongoose.Schema({
     },
     icon: {
         type: String,
-        required: true
+        required: false,
     },
     modules: [this],
     createdAt: {

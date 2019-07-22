@@ -6,7 +6,6 @@ export default function TransitionMenu({ isClicked = false }) {
     const [divRef, setDivRef] = useState(React.createRef())
 
     useEffect(() => {
-        const a = 1
         console.log("Criou")
     }, [])
 

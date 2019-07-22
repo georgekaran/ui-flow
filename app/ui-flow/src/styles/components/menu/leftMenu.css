@@ -2,15 +2,19 @@
     display: flex;
     width: 70px;
     height: 100vh;
-    background: #6155ae;
+    /* background: #6155ae; */
     justify-content: center;
     -webkit-transition: width 0.3s; /* Safari prior 6.1 */
     transition: width 0.3s;
+    -webkit-box-shadow: 3px 1px 9px -8px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 1px 9px -8px rgba(0,0,0,0.75);
+    box-shadow: 3px 1px 9px -8px rgba(0,0,0,0.75);
 }
 
 .menu-left-modules-wrapper {
-    padding: 20px 0;
+    padding: 5px 0;
     margin: 0 10px;
+    width: 90%;
 }
 
 .image-profile {
@@ -37,39 +41,51 @@
     transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
 }
 
-/* This fires as soon as the element enters the dorm */
-.item-profile-transition-enter,
-.item-profile-transition-appear {
-  /*We give the list the initial dimension of the list button*/
-  top: 0;
-  width: 120px;
-  max-height: 40px;
-  color: transparent;
-  background-color: #5a564c;
-}
-/* This is where we can add the transition*/
-.item-profile-transition-enter-active,
-.item-profile-transition-appear-active {
-  top: 45px;
-  width: 200px;
-  max-height: 200px;
-  background-color: #9e8949;
-  transition: all 400ms;
+.app-logo {
+  width: 50px;
+  display: flex;
+  margin: 10px auto;
+  font-family: 'Montserrat Alternates', sans-serif;
 }
 
-/* This fires as soon as the this.state.showList is false */
-.item-profile-transition-exit {
-  top: 45px;
-  width: 200px;
-  max-height: 200px;
-  background-color: #9e8949;
+.item-icon {
+  justify-self: center;
 }
-/* fires as element leaves the DOM*/
-.item-profile-transition-exit-active {
-  top: 0;
-  width: 120px;
-  max-height: 40px;
-  color: transparent;
-  background-color: #5a564c;
-  transition: all 400ms;
+
+.item-button {
+  cursor: pointer;
+}
+
+.item-title {
+  margin: 0 0 0 15px;
+}
+
+.item-wrapper {
+  display: grid;
+  cursor: pointer;
+  padding: 5px 0;
+  grid-template-columns: 25px auto 25px;
+  grid-template-rows: 25px;
+}
+
+.item-wrapper:hover span,
+.item-wrapper:hover div {
+  color: #4CA1EF !important;
+}
+
+.item-wrapper:hover .sub-item-icon {
+  display: block !important;
+}
+
+h1, h2, h3, h4, h5, h6, label, span, p {
+  color: #a5a5a5 !important;
+} 
+
+.sub-item-icon {
+  height: 24px;
+  border: 1.5px solid;
+}
+
+.hidden {
+  display: none;
 }

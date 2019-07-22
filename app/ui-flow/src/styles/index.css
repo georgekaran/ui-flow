@@ -23,3 +23,15 @@ h1, h2, h3, h4, h5, h6, label, span, p {
 .justify-center {
   justify-content: center;
 }
+
+.pd-10px-0 {
+  padding: 10px 0;
+}
+
+.pd-5px-0 {
+  padding: 5px 0;
+}
+
+.margin-0-auto {
+  margin: 0 auto;
+}

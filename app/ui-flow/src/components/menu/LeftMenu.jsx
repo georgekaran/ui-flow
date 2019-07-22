@@ -9,19 +9,21 @@ class LeftMenu extends React.Component {
 
     state = {
         modules: [],
-        menuClicked: false
+        menuClicked: false,
+        moduleClick: null
     }
 
     constructor(props) {
         super(props)
     }
 
-    clearState = () => {
-        this.setState({ ...this.state, menuClicked: false })
+    updateState = (updates) => {
+        this.setState({ ...this.state, ...updates })
+        this.updateMenuWidth(false)
     }
 
     async componentDidMount() {
-        await this.clearState();
+        await this.updateState({ menuClicked: false });
         await ModuleApi.getAll().then(resp => {
             const modules = resp.data.modules
             this.setState({ ...this.state, modules })
@@ -33,23 +35,26 @@ class LeftMenu extends React.Component {
         document.body.removeEventListener('click');
     }
 
+    updateMenuWidth = (isMenuClicked) => {
+        const menu = document.querySelector('#menu-left');
+        menu.style.width = isMenuClicked ? "320px" : "70px" ;
+    }
+
     handleMenuClicked = (event, menuClicked) => {
         const menu = document.querySelector('#menu-left');
         if (menu.contains(event.target)) {
             if (!this.state.menuClicked) {
                 this.setState({ ...this.state, menuClicked: !this.state.menuClicked })
             }
-            menu.style.width = "200px";
         } else {
             if (this.state.menuClicked) {
                 this.setState({ ...this.state, menuClicked: !this.state.menuClicked })
             }
-            menu.style.width = "70px"
         }
+        this.updateMenuWidth(this.state.menuClicked)
     }
 
     addClickEvent = () => {
-
         const { menuClicked } = this.state
         document.body.addEventListener('click', (event) => this.handleMenuClicked(event, menuClicked))
     }
@@ -58,12 +63,13 @@ class LeftMenu extends React.Component {
         return (
             <nav id="menu-left" className="menu-left">
                 <div className="menu-left-modules-wrapper">
-                    <TransitionMenu isClicked={this.state.menuClicked} />
+                    <img className="app-logo" src="http://127.0.0.1:5000/images/logo_teste.png"/>
+                    {/* <TransitionMenu isClicked={this.state.menuClicked} />
                     <div className="flex justify-center">
                         <span>----------</span>
-                    </div>
+                    </div> */}
                     {this.state.modules.map(module => {
-                        return <ItemMenu key={module._id} label={module.title} menuClicked={this.state.menuClicked} subItems={module.modules} />
+                        return <ItemMenu key={module._id} leftMenuState={this.state} updateState={this.updateState} module={module} />
                     })}
                 </div>
             </nav>
