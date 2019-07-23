@@ -11,6 +11,10 @@
     box-shadow: 3px 1px 9px -8px rgba(0,0,0,0.75);
 }
 
+.menu-left-expand {
+  width: 320px !important;
+}
+
 .menu-left-modules-wrapper {
     padding: 5px 0;
     margin: 0 10px;
@@ -44,7 +48,7 @@
 .app-logo {
   width: 50px;
   display: flex;
-  margin: 10px auto;
+  margin: 10px auto 20px auto;
   font-family: 'Montserrat Alternates', sans-serif;
 }
 
@@ -60,7 +64,7 @@
   margin: 0 0 0 15px;
 }
 
-.item-wrapper {
+.item-wrapper-expand {
   display: grid;
   cursor: pointer;
   padding: 5px 0;
@@ -68,12 +72,23 @@
   grid-template-rows: 25px;
 }
 
+.item-wrapper {
+  display: grid;
+  cursor: pointer;
+  padding: 5px 0;
+  grid-template-columns: 60px auto 25px !important;
+  grid-template-rows: 25px;
+}
+
 .item-wrapper:hover span,
-.item-wrapper:hover div {
+.item-wrapper-expand:hover span,
+.item-wrapper:hover div,
+.item-wrapper-expand:hover div {
   color: #4CA1EF !important;
 }
 
-.item-wrapper:hover .sub-item-icon {
+.item-wrapper:hover .sub-item-icon,
+.item-wrapper-expand:hover .sub-item-icon {
   display: block !important;
 }
 
@@ -88,4 +103,27 @@ h1, h2, h3, h4, h5, h6, label, span, p {
 
 .hidden {
   display: none;
+}
+
+.left-menu-bottom {
+  position: absolute;
+  bottom: 0;
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }

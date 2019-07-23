@@ -9,7 +9,7 @@ class LeftMenu extends React.Component {
 
     state = {
         modules: [],
-        menuClicked: false,
+        isExpand: false,
         moduleClick: null
     }
 
@@ -18,12 +18,18 @@ class LeftMenu extends React.Component {
     }
 
     updateState = (updates) => {
+        console.log(updates)
         this.setState({ ...this.state, ...updates })
-        this.updateMenuWidth(false)
+    }
+
+    updateMenuClicked = (isClicked) => {
+        this.setState(({ ...this.state, isExpand: isClicked }))
+        console.log("Menu: " + isClicked)
+        this.updateMenuWidth(this.state.isExpand)
     }
 
     async componentDidMount() {
-        await this.updateState({ menuClicked: false });
+        await this.updateState({ isExpand: false });
         await ModuleApi.getAll().then(resp => {
             const modules = resp.data.modules
             this.setState({ ...this.state, modules })
@@ -35,33 +41,32 @@ class LeftMenu extends React.Component {
         document.body.removeEventListener('click');
     }
 
-    updateMenuWidth = (isMenuClicked) => {
-        const menu = document.querySelector('#menu-left');
-        menu.style.width = isMenuClicked ? "320px" : "70px" ;
+    updateMenuWidth = (isClicked) => {
+        this.updateState({ isExpand: false });
     }
 
-    handleMenuClicked = (event, menuClicked) => {
+    handleMenuClicked = (event, isExpand) => {
+        console.log("Menu is clicked")
         const menu = document.querySelector('#menu-left');
         if (menu.contains(event.target)) {
-            if (!this.state.menuClicked) {
-                this.setState({ ...this.state, menuClicked: !this.state.menuClicked })
+            if (!this.state.isExpand) {
+                this.setState({ ...this.state, isExpand: true })
             }
         } else {
-            if (this.state.menuClicked) {
-                this.setState({ ...this.state, menuClicked: !this.state.menuClicked })
+            if (this.state.isExpand) {
+                this.setState({ ...this.state, isExpand: false })
             }
         }
-        this.updateMenuWidth(this.state.menuClicked)
     }
 
     addClickEvent = () => {
-        const { menuClicked } = this.state
-        document.body.addEventListener('click', (event) => this.handleMenuClicked(event, menuClicked))
+        const { isExpand } = this.state
+        document.body.addEventListener('click', (event) => this.handleMenuClicked(event, isExpand))
     }
 
     render() {
         return (
-            <nav id="menu-left" className="menu-left">
+            <nav id="menu-left" className={this.state.isExpand ? "menu-left menu-left-expand" : "menu-left"}>
                 <div className="menu-left-modules-wrapper">
                     <img className="app-logo" src="http://127.0.0.1:5000/images/logo_teste.png"/>
                     {/* <TransitionMenu isClicked={this.state.menuClicked} />
@@ -69,8 +74,13 @@ class LeftMenu extends React.Component {
                         <span>----------</span>
                     </div> */}
                     {this.state.modules.map(module => {
-                        return <ItemMenu key={module._id} leftMenuState={this.state} updateState={this.updateState} module={module} />
+                        return <ItemMenu key={module._id} leftMenuState={this.state} 
+                                         updateState={this.updateState} module={module}
+                                         updateMenuClicked={this.updateMenuClicked}/>
                     })}
+                    <ItemMenu leftMenuState={this.state} className={"left-menu-bottom"}
+                                updateState={this.updateState} module={{ _id: 0, title: "", icon: "arrow_forward_ios"}}
+                                updateMenuClicked={this.updateMenuClicked}/>
                 </div>
             </nav>
         )
