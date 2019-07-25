@@ -12,7 +12,7 @@ class Template extends React.Component {
             <div className="flex">
                 <LeftMenu />
                 <div>
-                    Conteudo
+                    asdas
                 </div>
             </div>
         )

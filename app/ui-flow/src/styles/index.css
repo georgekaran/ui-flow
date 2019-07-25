@@ -35,3 +35,15 @@ h1, h2, h3, h4, h5, h6, label, span, p {
 .margin-0-auto {
   margin: 0 auto;
 }
+
+.txt-alg-center {
+  text-align: center;
+}
+
+.txt-alg-right {
+  text-align: right;
+}
+
+.txt-alg-left {
+  text-align: left;
+}

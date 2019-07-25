@@ -78,9 +78,9 @@ class LeftMenu extends React.Component {
                                          updateState={this.updateState} module={module}
                                          updateMenuClicked={this.updateMenuClicked}/>
                     })}
-                    <ItemMenu leftMenuState={this.state} className={"left-menu-bottom"}
-                                updateState={this.updateState} module={{ _id: 0, title: "", icon: "arrow_forward_ios"}}
-                                updateMenuClicked={this.updateMenuClicked}/>
+                    <div className={this.state.isExpand ? "txt-alg-right left-menu-bottom" : "txt-alg-center left-menu-bottom" }>
+                        <span className="material-icons">{this.state.isExpand ? "arrow_back_ios" : "arrow_forward_ios"}</span>
+                    </div>
                 </div>
             </nav>
         )
