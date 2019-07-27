@@ -84,7 +84,8 @@
 .item-wrapper:hover span,
 .item-wrapper-expand:hover span,
 .item-wrapper:hover div,
-.item-wrapper-expand:hover div {
+.item-wrapper-expand:hover div,
+.left-menu-bottom:hover > span{
   color: #4CA1EF !important;
 }
 
@@ -111,6 +112,7 @@ h1, h2, h3, h4, h5, h6, label, span, p {
   bottom: 10px;
   right: 0;
   width: 100%;
+    cursor: pointer;
 }
 
 .example-enter {

@@ -2,6 +2,7 @@ import React from 'react'
 import '../../styles/components/menu/leftMenu.css'
 import ItemMenu from './ItemMenu'
 import ModuleApi from '../../service/ModuleService'
+import { withRouter } from 'react-router-dom';
 import TransitionMenu from './TransitionMenu'
 import { CSSTransition } from 'react-transition-group'
 
@@ -13,8 +14,8 @@ class LeftMenu extends React.Component {
         moduleClick: null
     }
 
-    constructor(props) {
-        super(props)
+    constructor({ activeTab }) {
+        super({ activeTab })
     }
 
     updateState = (updates) => {
@@ -24,7 +25,6 @@ class LeftMenu extends React.Component {
 
     updateMenuClicked = (isClicked) => {
         this.setState(({ ...this.state, isExpand: isClicked }))
-        console.log("Menu: " + isClicked)
         this.updateMenuWidth(this.state.isExpand)
     }
 
@@ -46,7 +46,6 @@ class LeftMenu extends React.Component {
     }
 
     handleMenuClicked = (event, isExpand) => {
-        console.log("Menu is clicked")
         const menu = document.querySelector('#menu-left');
         if (menu.contains(event.target)) {
             if (!this.state.isExpand) {
@@ -57,6 +56,10 @@ class LeftMenu extends React.Component {
                 this.setState({ ...this.state, isExpand: false })
             }
         }
+    }
+
+    hideMenu = () => {
+        this.setState({ ...this.state, isExpand: !this.state.isExpand })
     }
 
     addClickEvent = () => {
@@ -79,7 +82,9 @@ class LeftMenu extends React.Component {
                                          updateMenuClicked={this.updateMenuClicked}/>
                     })}
                     <div className={this.state.isExpand ? "txt-alg-right left-menu-bottom" : "txt-alg-center left-menu-bottom" }>
-                        <span className="material-icons">{this.state.isExpand ? "arrow_back_ios" : "arrow_forward_ios"}</span>
+                        <span className="material-icons" onClick={this.hideMenu}>
+                            {this.state.isExpand ? "arrow_back_ios" : "arrow_forward_ios"}
+                        </span>
                     </div>
                 </div>
             </nav>

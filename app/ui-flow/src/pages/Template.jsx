@@ -3,6 +3,11 @@ import React from 'react'
 import LeftMenu from '../components/menu/LeftMenu'
 
 class Template extends React.Component {
+
+    state = {
+        activeTab: "/dashboard"
+    };
+
     constructor(props) {
         super(props)
     }
@@ -10,7 +15,7 @@ class Template extends React.Component {
     render() {
         return (
             <div className="flex">
-                <LeftMenu />
+                <LeftMenu activeTab={this.state.activeTab} />
                 <div>
                     asdas
                 </div>
