@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+
+import TemplateContext from '../../context/template-context'
 import { CSSTransitionGroup } from 'react-transition-group' // ES6
 
 const Item = ({ leftMenuState, module, handleClick, isSubModule }) => (
@@ -14,11 +16,13 @@ const Item = ({ leftMenuState, module, handleClick, isSubModule }) => (
 
 const ItemMenu = ({ module = {}, leftMenuState, updateState, updateMenuClicked, className = "" }) => {
     const [ítemClicked, setItemClicked] = useState(false)
+    const { templateState, setTemplateState } = useContext(TemplateContext)
 
-    const handleClick = (id, isSubModule) => {
+    const handleClick = (id, module, isSubModule) => {
         if (isSubModule) {
             setItemClicked(false)
             updateMenuClicked(false)
+            setTemplateState({ activeTab: module.link })
         } else {
             setItemClicked(true)
             updateState({ moduleClick: id })
@@ -35,12 +39,12 @@ const ItemMenu = ({ module = {}, leftMenuState, updateState, updateMenuClicked, 
         <div className={className ? `item ${className}` : 'item'}>
             <div className="pd-5px-0">
                 <Item key={module._id} leftMenuState={leftMenuState} module={module}
-                    handleClick={(e) => handleClick(module._id, false)} isSubModule={false} />
+                    handleClick={(e) => handleClick(module._id, module, false)} isSubModule={false} />
                 {ítemClicked && leftMenuState.moduleClick === module._id && <div>
                     {module.modules && module.modules.map(subModule => {
                         return (
                             <Item key={subModule._id} leftMenuState={leftMenuState} module={subModule}
-                                handleClick={(e) => handleClick(module._id, true)} isSubModule={true} />
+                                handleClick={(e) => handleClick(module._id, subModule, true)} isSubModule={true} />
                         )
                     })}
                 </div>}

@@ -1,10 +1,7 @@
 import React from 'react'
 import '../../styles/components/menu/leftMenu.css'
 import ItemMenu from './ItemMenu'
-import ModuleApi from '../../service/ModuleService'
-import { withRouter } from 'react-router-dom';
-import TransitionMenu from './TransitionMenu'
-import { CSSTransition } from 'react-transition-group'
+import ModuleService from '../../service/ModuleService'
 
 class LeftMenu extends React.Component {
 
@@ -19,7 +16,6 @@ class LeftMenu extends React.Component {
     }
 
     updateState = (updates) => {
-        console.log(updates)
         this.setState({ ...this.state, ...updates })
     }
 
@@ -30,7 +26,7 @@ class LeftMenu extends React.Component {
 
     async componentDidMount() {
         await this.updateState({ isExpand: false });
-        await ModuleApi.getAll().then(resp => {
+        await ModuleService.getAll().then(resp => {
             const modules = resp.data.modules
             this.setState({ ...this.state, modules })
         })
@@ -69,25 +65,24 @@ class LeftMenu extends React.Component {
 
     render() {
         return (
-            <nav id="menu-left" className={this.state.isExpand ? "menu-left menu-left-expand" : "menu-left"}>
-                <div className="menu-left-modules-wrapper">
-                    <img className="app-logo" src="http://127.0.0.1:5000/images/logo_teste.png"/>
-                    {/* <TransitionMenu isClicked={this.state.menuClicked} />
-                    <div className="flex justify-center">
-                        <span>----------</span>
-                    </div> */}
-                    {this.state.modules.map(module => {
-                        return <ItemMenu key={module._id} leftMenuState={this.state} 
-                                         updateState={this.updateState} module={module}
-                                         updateMenuClicked={this.updateMenuClicked}/>
-                    })}
-                    <div className={this.state.isExpand ? "txt-alg-right left-menu-bottom" : "txt-alg-center left-menu-bottom" }>
-                        <span className="material-icons" onClick={this.hideMenu}>
-                            {this.state.isExpand ? "arrow_back_ios" : "arrow_forward_ios"}
-                        </span>
+            <>
+                <nav id="menu-left" className={this.state.isExpand ? "menu-left menu-left-expand" : "menu-left"}>
+                    <div className="menu-left-modules-wrapper">
+                        <img className="app-logo" src="http://127.0.0.1:5000/images/logo_teste.png"/>
+                        {this.state.modules.map(module => {
+                            return <ItemMenu key={module._id} leftMenuState={this.state} 
+                                            updateState={this.updateState} module={module}
+                                            updateMenuClicked={this.updateMenuClicked}/>
+                        })}
+                        <div className="line-separator" />
+                        <div className={this.state.isExpand ? "txt-alg-right left-menu-bottom" : "txt-alg-center left-menu-bottom" } onClick={this.hideMenu}>
+                            <span className="material-icons">
+                                {this.state.isExpand ? "arrow_back_ios" : "arrow_forward_ios"}
+                            </span>
+                        </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </>
         )
     }
 }

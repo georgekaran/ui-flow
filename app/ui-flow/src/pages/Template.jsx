@@ -1,7 +1,8 @@
 import React from 'react'
 
+import TemplateContext from '../context/template-context'
 import LeftMenu from '../components/menu/LeftMenu'
-
+import ActiveContent from '../components/menu/ActiveContent'
 class Template extends React.Component {
 
     state = {
@@ -12,14 +13,20 @@ class Template extends React.Component {
         super(props)
     }
 
+    updateState = (updates) => {
+        this.setState({ ...this.state, ...updates })
+    }
+
     render() {
         return (
-            <div className="flex">
-                <LeftMenu activeTab={this.state.activeTab} />
-                <div>
-                    asdas
+            <TemplateContext.Provider value={{ templateState: this.state, setTemplateState: this.updateState }}>
+                <div className="flex">
+                    <LeftMenu activeTab={this.state.activeTab} />
+                    <div>
+                        <ActiveContent activeTab={this.state.activeTab} />
+                    </div>
                 </div>
-            </div>
+            </TemplateContext.Provider>
         )
     }
 }
