@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
+import { withRouter } from "react-router";
 
 import TemplateContext from '../../context/template-context'
 import { CSSTransitionGroup } from 'react-transition-group' // ES6
@@ -14,15 +15,17 @@ const Item = ({ leftMenuState, module, handleClick, isSubModule }) => (
     </div>
 )
 
-const ItemMenu = ({ module = {}, leftMenuState, updateState, updateMenuClicked, className = "" }) => {
+const ItemMenu = (props) => {
+    const { module = {}, leftMenuState, updateState, updateMenuClicked, className = "" } = props
     const [ítemClicked, setItemClicked] = useState(false)
-    const { templateState, setTemplateState } = useContext(TemplateContext)
 
     const handleClick = (id, module, isSubModule) => {
         if (isSubModule) {
             setItemClicked(false)
             updateMenuClicked(false)
-            setTemplateState({ activeTab: module.link })
+            console.log(props)
+            props.history.push(module.link)
+            //setTemplateState({ activeTab: module.link })
         } else {
             setItemClicked(true)
             updateState({ moduleClick: id })
@@ -53,4 +56,4 @@ const ItemMenu = ({ module = {}, leftMenuState, updateState, updateMenuClicked, 
     )
 }
 
-export default ItemMenu
+export default withRouter(ItemMenu)

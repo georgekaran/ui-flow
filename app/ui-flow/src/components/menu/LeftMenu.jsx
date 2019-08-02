@@ -11,10 +11,6 @@ class LeftMenu extends React.Component {
         moduleClick: null
     }
 
-    constructor({ activeTab }) {
-        super({ activeTab })
-    }
-
     updateState = (updates) => {
         this.setState({ ...this.state, ...updates })
     }
@@ -31,10 +27,6 @@ class LeftMenu extends React.Component {
             this.setState({ ...this.state, modules })
         })
         this.addClickEvent();
-    }
-
-    componentWillUnmount() {
-        document.body.removeEventListener('click');
     }
 
     updateMenuWidth = (isClicked) => {
@@ -54,7 +46,7 @@ class LeftMenu extends React.Component {
         }
     }
 
-    hideMenu = () => {
+    toggleMenu = () => {
         this.setState({ ...this.state, isExpand: !this.state.isExpand })
     }
 
@@ -75,8 +67,8 @@ class LeftMenu extends React.Component {
                                             updateMenuClicked={this.updateMenuClicked}/>
                         })}
                         <div className="line-separator" />
-                        <div className={this.state.isExpand ? "txt-alg-right left-menu-bottom" : "txt-alg-center left-menu-bottom" } onClick={this.hideMenu}>
-                            <span className="material-icons">
+                        <div className={this.state.isExpand ? "txt-alg-right left-menu-bottom" : "txt-alg-center left-menu-bottom" } >
+                            <span className="material-icons" onClick={this.toggleMenu}>
                                 {this.state.isExpand ? "arrow_back_ios" : "arrow_forward_ios"}
                             </span>
                         </div>

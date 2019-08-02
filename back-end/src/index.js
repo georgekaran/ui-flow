@@ -3,15 +3,19 @@ const bodyParser = require('body-parser')
 const os = require('os');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const xss = require('xss-clean')
+const helmet = require('helmet')
+const mongoSanitize = require('express-mongo-sanitize')
 const session = require('express-session');
+const securityUtils = require('./app/utils/securityUtils')
 var cors = require('cors')
 
 const app = express()
 const appDir = path.join(os.homedir(), "images/");
 global.imagesPath = appDir
 
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }));
+app.use(bodyParser.json({ limit: '2mb' }));
+app.use(bodyParser.urlencoded({ limit: '2mb', extended: true, parameterLimit: 2000 }));
 app.use(cookieParser());
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -21,7 +25,21 @@ app.use(function(req, res, next) {
     next();
 });
 
+// Data Sanitization against XSS
+app.use(xss());
+
+// Extra protection using helmet
+app.use(helmet())
+
+// Preventing SQL/NoSQL Injection Attacks
+app.use(mongoSanitize());
+
 app.use('/images/', express.static(global.imagesPath))
+
+// Preventing DOS Attacks
+app.use('*', securityUtils.limitRequestPerSecond(100), (req, res, next) => {
+    next() // pass control to the next handler
+})
 
 require('./app/controllers/index')(app)
 
