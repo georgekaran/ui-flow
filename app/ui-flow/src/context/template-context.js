@@ -1,5 +1,6 @@
 import React from 'react'
 
 const TemplateContext = React.createContext()
+const MenuLeftContext = React.createContext()
 
-export default TemplateContext
+export { TemplateContext, MenuLeftContext }

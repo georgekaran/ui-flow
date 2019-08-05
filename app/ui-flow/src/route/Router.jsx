@@ -4,7 +4,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import CustomRoute from './CustomRoute'
 import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
-import Template from '../pages/Template'
 import LeftMenu from '../components/menu/LeftMenu'
 import SimpleTest from '../components/tests/SimpleTest';
 import SimpleTest2 from '../components/tests/SimpleTest2';
@@ -28,6 +27,7 @@ class Router extends React.Component {
             </BrowserRouter>
         ) : (
             <BrowserRouter>
+                <LeftMenu />
                 <Switch>
                     <CustomRoute exact path="/" component={Home} isAuth={false} isPrivate={false} />
                     <CustomRoute path="/teste" component={SimpleTest} isAuth={false} isPrivate={false} />
