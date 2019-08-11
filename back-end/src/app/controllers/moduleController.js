@@ -30,7 +30,26 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const modules = await Module.find({modules: {$ne:[]}})
+        const subModules = await Module.aggregate([
+            { "$unwind": "$modules" },
+            { "$unwind": "$modules._id" },
+            { $match: { modules: { $ne: [] } } },
+            {
+                "$group": {
+                    "_id": null,
+                    "modules": { "$push": "$modules._id" }
+                }
+            }
+        ]);
+        const modules = await Module.find({
+            $or: [{
+                _id: {
+                    $nin: subModules[0].modules
+                },
+                modules: { $eq: [] }
+            },
+            { modules: { $ne: [] } }]
+        })
         res.send({ modules })
     } catch (err) {
         console.log(err)
