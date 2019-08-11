@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react'
 
 import { TemplateContext, MenuLeftContext } from '../context/template-context'
-import LeftMenu from './menu/LeftMenuOld'
 
 export default function ComponentEnhancer(WrappedComponent) {
     return function Template(props) {
