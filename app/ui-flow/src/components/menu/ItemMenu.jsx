@@ -24,7 +24,7 @@ const ItemMenu = (props) => {
             setExpand(false)
             props.history.push(module.link)
         } else {
-            setModuleClick(id)
+            return setModuleClick(moduleClick && id === moduleClick ? null : id)
         }
     }
 

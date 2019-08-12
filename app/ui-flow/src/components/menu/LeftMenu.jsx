@@ -9,7 +9,7 @@ export default () => {
     const [modules, setModules] = useState([])
     const [moduleClick, setModuleClick] = useState(null)
     const toggleButton = useRef(null);
-    window.isExpand = isExpand
+    window.isExpand = isExpand;
 
     useEffect(() => {
         async function fetchModulesAsync() {
