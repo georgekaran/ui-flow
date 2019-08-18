@@ -1,6 +1,6 @@
 .menu-left {
     display: flex;
-    width: 70px;
+    width: 60px;
     height: 100vh;
     /* background: #6155ae; */
     justify-content: center;
@@ -13,7 +13,7 @@
 }
 
 .menu-left-expand {
-  width: 320px !important;
+  width: 280px !important;
 }
 
 .menu-left-modules-wrapper {
@@ -63,13 +63,13 @@
 }
 
 .item-title {
-  margin: 0 0 0 15px;
+  margin: 5px 0 0 15px;
 }
 
 .item-wrapper-expand {
   display: grid;
   cursor: pointer;
-  padding: 5px 0;
+  padding: 1px 0;
   grid-template-columns: 25px auto 25px;
   grid-template-rows: 25px;
 }
@@ -77,8 +77,8 @@
 .item-wrapper {
   display: grid;
   cursor: pointer;
-  padding: 5px 0;
-  grid-template-columns: 60px auto 25px !important;
+  padding: 1px 0;
+  grid-template-columns: 50px auto 25px !important;
   grid-template-rows: 25px;
 }
 
@@ -123,6 +123,10 @@ h1, h2, h3, h4, h5, h6, label, span, p {
   height: 1px;
   background: #e8e8e8;
   left: -15px;
+}
+
+.rotate-90deg {
+  transform: rotate(-90deg);
 }
 
 .example-enter {

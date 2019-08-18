@@ -4,11 +4,11 @@ import { TemplateContext, MenuLeftContext } from '../context/template-context'
 
 export default function ComponentEnhancer(WrappedComponent) {
     return function Template(props) {
-        const [templateState, setTemplateState] = useState({ activeTab: "/dashboard" });
+        const [templateState, setTemplateState] = useState({ activeTab: "/dashboard"});
 
         return (
             <TemplateContext.Provider value={{ templateState, setTemplateState }}>
-                <div className="flex">
+                <div className="flex width-100">
                     <WrappedComponent {...props} />
                 </div>
             </TemplateContext.Provider>

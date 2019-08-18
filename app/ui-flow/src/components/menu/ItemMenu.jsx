@@ -1,10 +1,10 @@
 import React from 'react'
 import { withRouter } from "react-router";
 
-const Item = ({ isExpand, module, handleClick, isSubModule }) => (
+const Item = ({ isExpand, module, handleClick, isSubModule, moduleClick }) => (
     <div className={isExpand ? "item-wrapper-expand" : "item-wrapper"} onClick={handleClick}>
         <span className="item-icon material-icons" title={module.title}>
-            {isSubModule ? <div className="hidden sub-item-icon" /> : module.icon}
+            {isSubModule ? <div className="sub-item-icon" /> : module.icon}
         </span>
 
         {isExpand && <span className="item-title">{module.title}</span>}
@@ -12,7 +12,7 @@ const Item = ({ isExpand, module, handleClick, isSubModule }) => (
             !isSubModule &&
             module.modules.length > 0 &&
             module._id !== 0 &&
-            <span className="material-icons">keyboard_arrow_down</span>}
+            <span className={`material-icons ${moduleClick !== module._id ? 'rotate-90deg' : ''}`}>keyboard_arrow_down</span>}
     </div>
 )
 
@@ -24,7 +24,7 @@ const ItemMenu = (props) => {
             setExpand(false)
             props.history.push(module.link)
         } else {
-            return setModuleClick(moduleClick && id === moduleClick ? null : id)
+            setModuleClick(moduleClick && id === moduleClick ? null : id)
         }
     }
 
@@ -35,7 +35,8 @@ const ItemMenu = (props) => {
                     isExpand={isExpand}
                     module={module}
                     handleClick={(e) => handleClick(module._id, module)}
-                    isSubModule={module.modules ? false : true} />
+                    isSubModule={module.modules ? false : true} 
+                    moduleClick={moduleClick} />
                 {moduleClick === module._id && <div>
                     {module.modules && module.modules.map(subModule => {
                         return (
@@ -43,7 +44,8 @@ const ItemMenu = (props) => {
                                 isExpand={isExpand}
                                 module={subModule}
                                 handleClick={(e) => handleClick(module._id, subModule)}
-                                isSubModule={true} />
+                                isSubModule={true} 
+                                moduleClick={moduleClick} />
                         )
                     })}
                 </div>}
