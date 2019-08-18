@@ -1,18 +1,12 @@
-import React, { useState, useEffect, useMemo } from 'react'
-
-import { TemplateContext, MenuLeftContext } from '../context/template-context'
+import React from 'react'
+import DivTheme from './div/DivTheme'
 
 export default function ComponentEnhancer(WrappedComponent) {
     return function Template(props) {
-        const [templateState, setTemplateState] = useState({ activeTab: "/dashboard"});
-
         return (
-            <TemplateContext.Provider value={{ templateState, setTemplateState }}>
-                <div className="flex width-100">
-                    <WrappedComponent {...props} />
-                </div>
-            </TemplateContext.Provider>
+            <DivTheme className="flex width-100" levelTheme="l2">
+                <WrappedComponent {...props} />
+            </DivTheme>
         )
     }
 }
- 

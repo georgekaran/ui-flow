@@ -1,0 +1,28 @@
+:root {
+    --dark-1-bg-color: #333335;
+    --dark-1-title-color: #C3C3C3;
+    --dark-1-text-color: #838385;
+
+    --dark-2-bg-color: #262628;
+    --dark-2-title-color: #A8A8A9;
+    --dark-2-text-color: #4D4D4E;
+
+    --dark-3-bg-color: #48484A;
+    --dark-3-title-color: #EEEEEE;
+    --dark-3-text-color: #909092;
+}
+
+.dark-theme.l1 {
+    background-color: var(--dark-1-bg-color);
+    color: var(--dark-1-title-color);
+}
+
+.dark-theme.l2 {
+    background-color: var(--dark-2-bg-color);
+    color: var(--dark-2-title-color);
+}
+
+.dark-theme.l3 {
+    background-color: var(--dark-3-bg-color);
+    color: var(--dark-3-title-color);
+}
