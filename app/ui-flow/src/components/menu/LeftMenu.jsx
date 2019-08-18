@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef, useContext } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import '../../styles/components/menu/leftMenu.css'
 
 import ItemMenu from './ItemMenu'
 import ModuleService from '../../service/ModuleService'
-import { TemplateContext } from '../../context/template-context'
 import DivTheme from '../div/DivTheme'
 
 export default () => {
@@ -11,7 +10,6 @@ export default () => {
     const [modules, setModules] = useState([])
     const [moduleClick, setModuleClick] = useState(null)
     const toggleButton = useRef(null);
-    const { darkMode } = useContext(TemplateContext)
     window.isExpand = isExpand;
 
     useEffect(() => {
@@ -60,7 +58,6 @@ export default () => {
     return (
         <>
             <DivTheme id="menu-left" levelTheme="l1" className={isExpand ? "menu-left menu-left-expand" : "menu-left"}>
-            
                 <div className="menu-left-modules-wrapper">
                     <img className="app-logo" src="http://127.0.0.1:5000/images/logo_teste.png" />
                     {modules.map(module => {

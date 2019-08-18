@@ -5,7 +5,6 @@ import '../../styles/pages/template.css'
 import { removePropertyFromObject } from '../../util/objectUtil'
 
 export default function DivTheme(props) {
-    console.log(props)
     const { levelTheme } = props
     const { templateState } = useContext(TemplateContext)
 

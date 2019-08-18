@@ -95,10 +95,6 @@
   display: block !important;
 }
 
-h1, h2, h3, h4, h5, h6, label, span, p {
-  color: #a5a5a5 !important;
-} 
-
 .sub-item-icon {
   height: 24px;
   border: 1.5px solid;

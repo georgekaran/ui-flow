@@ -10,19 +10,104 @@
     --dark-3-bg-color: #48484A;
     --dark-3-title-color: #EEEEEE;
     --dark-3-text-color: #909092;
+
+    --light-1-bg-color: #333335;
+    --light-1-title-color: #C3C3C3;
+    --light-1-text-color: #838385;
+
+    --light-2-bg-color: #262628;
+    --light-2-title-color: #A8A8A9;
+    --light-2-text-color: #4D4D4E;
+
+    --light-3-bg-color: #48484A;
+    --light-3-title-color: #EEEEEE;
+    --light-3-text-color: #909092;
 }
 
 .dark-theme.l1 {
     background-color: var(--dark-1-bg-color);
-    color: var(--dark-1-title-color);
 }
 
 .dark-theme.l2 {
     background-color: var(--dark-2-bg-color);
-    color: var(--dark-2-title-color);
 }
 
 .dark-theme.l3 {
     background-color: var(--dark-3-bg-color);
-    color: var(--dark-3-title-color);
 }
+
+.dark-theme.l1 h1, 
+.dark-theme.l1 h2, 
+.dark-theme.l1 h3, 
+.dark-theme.l1 h4,
+.dark-theme.l1 h5,
+.dark-theme.l1 h6,
+.dark-theme.l1 label,
+.dark-theme.l1 span,
+.dark-theme.l1 p {
+  color: var(--dark-1-title-color);
+}
+
+.dark-theme.l2 h1, 
+.dark-theme.l2 h2, 
+.dark-theme.l2 h3, 
+.dark-theme.l2 h4,
+.dark-theme.l2 h5,
+.dark-theme.l2 h6,
+.dark-theme.l2 label,
+.dark-theme.l2 span,
+.dark-theme.l2 p {
+  color: var(--dark-2-title-color);
+}
+
+.dark-theme.l3 h1, 
+.dark-theme.l3 h2, 
+.dark-theme.l3 h3, 
+.dark-theme.l3 h4,
+.dark-theme.l3 h5,
+.dark-theme.l3 h6,
+.dark-theme.l3 label,
+.dark-theme.l3 span,
+.dark-theme.l3 p {
+  color: var(--dark-3-title-color);
+}
+
+.light-theme.l1 h1, 
+.light-theme.l1 h2, 
+.light-theme.l1 h3, 
+.light-theme.l1 h4,
+.light-theme.l1 h5,
+.light-theme.l1 h6,
+.light-theme.l1 label,
+.light-theme.l1 span,
+.light-theme.l1 p {
+  color: var(--light-1-title-color);
+}
+
+.light-theme.l2 h1, 
+.light-theme.l2 h2, 
+.light-theme.l2 h3, 
+.light-theme.l2 h4,
+.light-theme.l2 h5,
+.light-theme.l2 h6,
+.light-theme.l2 label,
+.light-theme.l2 span,
+.light-theme.l2 p {
+  color: var(--light-2-title-color);
+}
+
+.light-theme.l3 h1, 
+.light-theme.l3 h2, 
+.light-theme.l3 h3, 
+.light-theme.l3 h4,
+.light-theme.l3 h5,
+.light-theme.l3 h6,
+.light-theme.l3 label,
+.light-theme.l3 span,
+.light-theme.l3 p {
+  color: var(--light-3-title-color);
+}
+
+/* h1, h2, h3, h4, h5, h6, label, span, p {
+    color: #a5a5a5 !important;
+}  */
