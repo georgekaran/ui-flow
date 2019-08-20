@@ -1,4 +1,5 @@
 const express = require('express')
+const router = express.Router()
 const bodyParser = require('body-parser')
 const os = require('os');
 const path = require('path');
@@ -41,7 +42,7 @@ app.use('*', securityUtils.limitRequestPerSecond(100), (req, res, next) => {
     next() // pass control to the next handler
 })
 
-require('./app/controllers/index')(app)
+require('./app/controllers/v1/index')(app)
 
 app.use('/', (req, res) => res.send('UIFlow is up and running!'))
 

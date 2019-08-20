@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const Module = require('../models/module')
+const Module = require('../../models/module')
 
 router.post('/', async (req, res) => {
     try {
@@ -67,4 +67,4 @@ router.delete('/', async (req, res) => {
     }
 })
 
-module.exports = app => app.use('/module', router)
+module.exports = app => app.use('/api/v1/module', router)
