@@ -1,10 +1,12 @@
 const User = require('../../models/user')
+const Validation = require('./Validation')
+
+const userValidation = new Validation(User)
 
 module.exports = async (req, res, next) => {
-    const user = await User.findOne({ email: req.body.email });
-    console.log(user)
-    if (user) {
-        return res.status(400).send({ message: "Email já cadastrado, tente outro e-mail."})
+    if (userValidation.isEverythingValid(req.body)) {
+        next()
+    } else {
+        return res.status(400).send({ message: 'Erro nas validações do usuário', error: true })
     }
-    next()
 }

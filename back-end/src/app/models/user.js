@@ -1,7 +1,8 @@
 const mongoose = require('../../db')
 const bcrypt = require('bcrypt')
+const CustomSchema = require('../../db/CustomSchema')
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new CustomSchema({
     name: {
         type: String,
         required: true,

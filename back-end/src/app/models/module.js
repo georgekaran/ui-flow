@@ -1,6 +1,7 @@
 const mongoose = require('../../db')
+const CustomSchema = require('../../db/CustomSchema')
 
-const ModuleSchema = new mongoose.Schema({
+const ModuleSchema = new CustomSchema({
     title: {
         type: String,
         required: true,

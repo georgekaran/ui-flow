@@ -11,6 +11,10 @@ const session = require('express-session');
 const securityUtils = require('./app/utils/securityUtils')
 var cors = require('cors')
 
+//Load enviroment variables
+require('dotenv').config();
+require('dotenv').config({path:__dirname+'/resources/.env.message_pt'})
+
 const app = express()
 const appDir = path.join(os.homedir(), "images/");
 global.imagesPath = appDir
