@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/georgekaran/ui-flow/issues"
   },
-  "homepage": "https://github.com/georgekaran/ui-flow#readme"
+  "homepage": "https://github.com/georgekaran/ui-flow#readme",
+  "dependencies": {
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.4",
+    "redux-persist": "^5.10.0",
+    "redux-reset": "^0.3.0",
+    "redux-saga": "^1.0.5"
+  },
+  "devDependencies": {
+    "redux-devtools": "^3.5.0"
+  }
 }

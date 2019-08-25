@@ -1,17 +1,24 @@
-import React, { useContext } from 'react'
-import { TemplateContext } from '../../context/template-context'
+import React from 'react'
+import { connect } from 'react-redux'
 import '../../styles/pages/template.css'
 
 import { removePropertyFromObject } from '../../util/objectUtil'
 
-export default function DivTheme(props) {
-    const { levelTheme } = props
-    const { templateState } = useContext(TemplateContext)
+function DivTheme(props) {
+    const { darkMode, levelTheme } = props
 
     return (
-        <div {...removePropertyFromObject(props, ["levelTheme"])} 
-            className={`${props.className !== null ? props.className : ''} ${templateState.darkMode ? 'dark-theme' : 'light-theme'} ${levelTheme}`} >
-            
+        <div {...removePropertyFromObject(props, ["levelTheme"])}
+            className={`${props.className !== null ? props.className : ''} ${darkMode ? 'dark-theme' : 'light-theme'} ${levelTheme}`} >
         </div>
     )
 }
+
+const mapStateToProps = (state, props) => {
+    return {
+        darkMode: state.user.darkMode,
+        ...props
+    }
+}
+
+export default connect(mapStateToProps)(DivTheme)

@@ -9,9 +9,12 @@ const { getPropertyValue } = require('../../utils/messageDeliver')
 //router.use(authMiddleware)
 
 router.get('/', async (req, res) => {
-    console.log()
-    const users = await User.find({});
-    res.send({ users });
+    try {
+        const users = await User.find({});
+        return res.send({ users });
+    } catch (err) {
+        return res.status(400).send({ message: err, error: true })
+    }
 })
 
 router.post('/', userValidationsMiddleware, async (req, res) => {
@@ -28,11 +31,25 @@ router.post('/', userValidationsMiddleware, async (req, res) => {
 })
 
 router.delete('/', async (req, res) => {
-    res.send("Teste user");
+    try {
+        User.findOneAndRemove({ email: req.body.email })
+        return res.status(200).send({ message: getPropertyValue('message.insert.sucess', ['Usuário']), error: false })
+    } catch (err) {
+        return res.status(400).send({ message: err, error: true })
+    }
 })
 
-router.put('/', userValidationsMiddleware, async (req, res) => {
-    res.send("Teste user");
+router.put('/:id', async (req, res) => {
+    try {
+        let user = await User.findByIdAndUpdate(req.params.id, {
+            $set: {
+                ...req.body
+            }
+        });
+        return res.status(200).send({ message: getPropertyValue('message.insert.sucess', ['Usuário']), error: false })
+    } catch (err) {
+        return res.status(400).send({ message: err, error: true })
+    }
 })
 
 module.exports = app => app.use('/api/v1/user', router)
