@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-dev": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start-dev": "NODE_ENV=dev nodemon src/server.js --ignore __tests__",
+    "start-prod": "NODE_ENV=prod node src/server.js",
+    "test": "NODE_ENV=test jest"
   },
   "author": "George Karan Kommers Mueller",
   "license": "ISC",
   "dependencies": {
+    "@hapi/joi": "^15.1.1",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
@@ -27,8 +29,13 @@
     "multer": "^1.4.1",
     "nodemailer": "^6.1.1",
     "nodemailer-express-handlebars": "^3.0.0",
+    "nodemon": "^1.19.1",
     "path": "^0.12.7",
     "pm2": "^3.5.0",
     "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "supertest": "^4.0.2"
   }
 }

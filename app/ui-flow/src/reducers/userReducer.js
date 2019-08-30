@@ -5,7 +5,7 @@ let usersReducerDefaultState = {
     lastName: 'Kommers Mueller',
     email: 'georgekaran12@gmail.com',
     profileImage: 'no-image',
-    darkMode: true,
+    darkMode: false,
     passwordResetToken: '',
     passwordResetExpires: '',
     createdAt: Date.now(),

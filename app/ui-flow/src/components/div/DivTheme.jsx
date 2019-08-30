@@ -8,7 +8,7 @@ function DivTheme(props) {
     const { darkMode, levelTheme } = props
 
     return (
-        <div {...removePropertyFromObject(props, ["levelTheme"])}
+        <div {...removePropertyFromObject(props, ["levelTheme", "darkMode", "dispatch"])}
             className={`${props.className !== null ? props.className : ''} ${darkMode ? 'dark-theme' : 'light-theme'} ${levelTheme}`} >
         </div>
     )

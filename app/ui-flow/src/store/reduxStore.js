@@ -5,7 +5,6 @@ import storage from 'redux-persist/lib/storage'
 import createSagaMiddleware from 'redux-saga'
 
 import { reducers } from '../reducers/index'
-import userReducer from '../reducers/userReducer'
 
 const persistConfig = {
     key: 'root',
@@ -20,7 +19,7 @@ const appReducer = combineReducers({
 const enHanceCreateStore = compose(
     reduxReset(),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)(createStore);
+)(createStore, applyMiddleware(createSagaMiddleware));
 
 const persistedReducer = persistReducer(persistConfig, appReducer);
 export const store = enHanceCreateStore(persistedReducer);
